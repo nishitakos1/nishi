@@ -1,0 +1,23 @@
+{% extends "dappx/base.html" %} {% load static %}{% block body_block %}
+<div class="container">
+    <div class="jumbotron">
+        {% if registered %}
+        <h1>Thank you for registering!</h1>
+        {% else %}
+        <h1>Register Here</h1>
+        <h3>Just fill out the form.</h3>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <br> {{ user_form.as_p}}
+            <label for="phone"><h4><b>Phone number:</b></h4></label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}"><br>
+            <label><h4><b>Address : </b></h4></label>
+            <input type="textarea"><br><br>
+            <input type="submit" name="" value="Register">
+        </form>
+
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
